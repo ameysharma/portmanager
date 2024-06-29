@@ -1,21 +1,24 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, render_template
 from flask_restful import Resource, Api
 
-from scripts.stselection import fetch_nifty_data 
+#from scripts.stselection import fetch_nifty_data 
 
 
 #Main Scripts Writing
 
-symbols=['RELIANCE.NS']
-data=fetch_nifty_data(symbols)
+#symbols=['RELIANCE.NS']
+#data=fetch_nifty_data(symbols)
 
 
 
 app = Flask(__name__)
+
+
+
 api = Api(app)
 
 # Define your API key (this should be securely stored in production)
-API_KEY = '#arshar#123'
+API_KEY = ''
 
 # Mock data
 users = [
@@ -73,5 +76,11 @@ class UserList(Resource):
 api.add_resource(User, '/users/<int:user_id>')
 api.add_resource(UserList, '/users')
 
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')      
+
 if __name__ == '__main__':
-    app.run(debug=True)
+     app.run(debug=True)
