@@ -6,8 +6,10 @@ from scripts.stselection import fetch_nifty_data
 
 #Main Scripts Writing
 
-
+symbols=['RELIANCE.NS']
 data=fetch_nifty_data(symbols)
+
+
 
 app = Flask(__name__)
 api = Api(app)
